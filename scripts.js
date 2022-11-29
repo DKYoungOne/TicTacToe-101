@@ -61,9 +61,8 @@ const addMarker = (id) => {
   
   
   board[row][column] = currentMarker
-  if(activeGame===true){
-    checkForWin();
-  }
+  checkForWin();
+  
 }
 
 
@@ -121,10 +120,12 @@ const resetBoard = () => {
 
 const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
-  setTimeout(function(){window.alert(`Player ${currentMarker} won!`), 100})
+  setTimeout(function(){window.alert(`Player ${currentMarker} won!`), 500})
   activeGame = false;  
   } else {
-    changeMarker()
+    if(activeGame) {
+      changeMarker()
+    }
   }
 }
 
