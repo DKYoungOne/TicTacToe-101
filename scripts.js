@@ -28,7 +28,9 @@ const handleClick = (element) => {
   // this next line prevents an X being changed to an O or an O being changed to an X by...
   //  checking to see if the square clicked has anything in it, if not continue
   if(!document.getElementById(element.id).innerHTML){
-    addMarker(element.id)
+    if(activeGame){
+      addMarker(element.id)
+    }
   }
 }
 
@@ -120,12 +122,12 @@ const resetBoard = () => {
 
 const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
-  setTimeout(function(){window.alert(`Player ${currentMarker} won!`), 500})
-  activeGame = false;  
+    setTimeout(function(){window.alert(`Player ${currentMarker} won!`), 500})
+    activeGame = false;  
   } else {
-    if(activeGame) {
-      changeMarker()
-    }
+    
+    changeMarker()
+    
   }
 }
 
