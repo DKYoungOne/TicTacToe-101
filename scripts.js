@@ -11,7 +11,7 @@
 let board = [[],[],[]]
 
 
-let activeGame = true;
+
 
 let currentMarker = 'X'
 
@@ -28,9 +28,9 @@ const handleClick = (element) => {
   // this next line prevents an X being changed to an O or an O being changed to an X by...
   //  checking to see if the square clicked has anything in it, if not continue
   if(!document.getElementById(element.id).innerHTML){
-    if(activeGame){
-      addMarker(element.id)
-    }
+    
+    addMarker(element.id)
+    
   }
 }
 
@@ -117,13 +117,13 @@ const resetBoard = () => {
     squares[i].innerHTML = null
   }  
   board = [[],[],[]]
-  activeGame = true;
+  
 }
 
 const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
     setTimeout(function(){window.alert(`Player ${currentMarker} won!`), 500})
-    activeGame = false;  
+      
   } else {
     
     changeMarker()
