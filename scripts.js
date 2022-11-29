@@ -11,7 +11,7 @@
 let board = [[],[],[]]
 
 
-
+let activeGame = true;
 
 let currentMarker = 'X'
 
@@ -61,7 +61,9 @@ const addMarker = (id) => {
   
   
   board[row][column] = currentMarker
-  checkForWin();
+  if(activeGame===true){
+    checkForWin();
+  }
 }
 
 
@@ -114,11 +116,13 @@ const resetBoard = () => {
     squares[i].innerHTML = null
   }  
   board = [[],[],[]]
+  activeGame = true;
 }
 
 const checkForWin = () => {
   if(horizontalWin() || verticalWin() || diagonalWin()) {
-    window.alert(`Player ${currentMarker} won!`)
+  setTimeout(function(){window.alert(`Player ${currentMarker} won!`), 100})
+  activeGame = false;  
   } else {
     changeMarker()
   }
